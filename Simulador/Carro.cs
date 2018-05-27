@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 
 namespace Simulador
@@ -12,20 +10,25 @@ namespace Simulador
         public int velocidade { get; set; }
 
 
-        public void Acelerando(int velocidade)
+        public void Controle(int velocidade, string marca)
         {
             if (velocidade <= 50)
             {
-                Console.Write("\r{0} Km/h  " , velocidade );
+
+                Console.Write(marca +  "\r{0} Km/h  " , velocidade );
                 Thread.Sleep(100);
-                //Console.Clear();
-                Acelerando(velocidade + 1);
+                Controle(velocidade + 1, marca + "=");
             }
         }
-        public void Freando()
+
+        public void Freando(int velocidade)
         {
-            for (int i = 50; i >= 0; i--)
-                Console.WriteLine(i + " kM/h");
+            if (velocidade >= 0)
+            {
+                Console.Write( "\r{0} Km/h  ", velocidade );
+                Thread.Sleep(100);
+                Freando(velocidade - 1);
+            }
         }
     }
 }
