@@ -21,7 +21,7 @@ namespace Simulador
                 if (opcao == 1)
                 {
                     Console.WriteLine("Aumentando a velocidade:");
-                    velocidade.Acelerando();
+                    velocidade.Acelerando(0);
                 }
 
                 if (opcao == 2)

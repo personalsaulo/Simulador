@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Simulador
 {
@@ -11,11 +12,15 @@ namespace Simulador
         public int velocidade { get; set; }
 
 
-        public void Acelerando()
+        public void Acelerando(int velocidade)
         {
-            for(int i = 0; i <=50; i++)
-                Console.WriteLine(i + " kM/h");
-
+            if (velocidade <= 50)
+            {
+                Console.Write("\r{0} Km/h  " , velocidade );
+                Thread.Sleep(100);
+                //Console.Clear();
+                Acelerando(velocidade + 1);
+            }
         }
         public void Freando()
         {
